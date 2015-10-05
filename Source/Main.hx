@@ -40,7 +40,6 @@ class Main extends Sprite {
 	public function new () {
 		
 		super ();
-		PiScreenCapture.setPath("/home/pi/Desktop/");
 
 		PiGpio.wiringPiSetupGpio();
 		PiGpio.setupMcp300x(100,0);
@@ -120,8 +119,6 @@ class Main extends Sprite {
 			case Keyboard.F4:
 				openfl.system.System.exit(0);
 
-			case Keyboard.F6:
-				PiScreenCapture.capture();
 		}
 	}
 }
