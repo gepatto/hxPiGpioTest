@@ -43,6 +43,7 @@ class Main extends Sprite {
 		PiScreenCapture.setPath("/home/pi/Desktop/");
 
 		PiGpio.wiringPiSetupGpio();
+		PiGpio.setupMcp300x(100,0);
 		PiGpio.pinMode(PWM_PIN, PiGpio.PWM_OUTPUT );
 		PiGpio.pinMode(LED_PIN, PiGpio.OUTPUT );
 		PiGpio.pinMode(BTN_PIN, PiGpio.INPUT );
@@ -91,19 +92,15 @@ class Main extends Sprite {
 		addChild(Fps);
 
 		stage.addEventListener (KeyboardEvent.KEY_DOWN, stage_onKeyDown);
-		addEventListener (KeyboardEvent.KEY_DOWN, stage_onKeyDown);		
+		//addEventListener (KeyboardEvent.KEY_DOWN, stage_onKeyDown);		
 		addEventListener (Event.ENTER_FRAME, this_onEnterFrame);
 	}
 	
 	private function this_onEnterFrame (event:Event):Void {
 		var btnValue = PiGpio.digitalRead(BTN_PIN);
 		btnFeedback.selected = btnValue==0; //active low!
-		/*
-		pwmValue+=4;
-		pwmValue = pwmValue%1024;
-		PiGpio.pwmWrite(PWM_PIN, pwmValue);
-		tfStatus.text ="PWM " + pwmValue;
-		*/
+		var analog0 = PiGpio.analogRead(100);
+		tfStatus.text = "Analog 0: " + analog0;
 	}
 	
 	private function toggleLed(event:MouseEvent):Void
