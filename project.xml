@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="GpioTest" package="com.sample.gpiotest" version="1.0.0" company="Company Name" />
+	<app main="Main" path="Export" file="GpioTest" fps="60"/>
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+	<haxelib name="hxPiGpio" />
+	<haxelib name="hxPiScreenCapture" />
+
+	<assets path="Assets" rename="assets" />
+
+	<assets path="Assets/sounds" rename="sounds">
+		<sound path="4.wav" id="plonk" />
+	</assets>
+	
+</project>
